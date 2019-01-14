@@ -5,7 +5,7 @@ Sherlock was written by Rob Pike and Loki. Unfortunately their website went
 offline somewhere in 2018 (http://rp-www.cs.usyd.edu.au/~scilect/sherlock/).
 This is a source code copy of 2016 since I still actively use this algorithm.
 
-Parts of this readme a copied from the snapshot copy of archive.org.
+Parts of this readme are copied from the snapshot copy of archive.org.
 
 # Sherlock
 
@@ -104,9 +104,27 @@ Sherlock avoids these issues but requires all files to be compared every time to
 
 On the other hand, Sherlock is not see well suited to detecting duplicate email messages, since email arrives continually, and you can never have a finished set of email to work on. Intermediate ".sig" files might reduce the time needed to compare a new email item to older items, since the signatures for old items will already be computed and stored. Sherlock would have to read and compute the signatures for all of those older files, every time you need a comparison, because it does not use ".sig" files.
 
-## Can I download sig and comp?
+# sig and comp - separate steps
 
-Yes, download them by saving the following files:
+## Usage sig - Signature
+
+    sherlock_signature source.txt
+    sherlock_signature source.txt > signature_file.txt      # or directly write the output into a file
+
+You can use the <tt>-z _zerobits_</tt>, <tt>-n _number_of_words_</tt> and <tt>-o _outfile_</tt> option.
+
+## Usage comp - Compare
+
+    sherlock_compare signature_file_1.txt signature_file_2.txt   # to compare 2 files directly
+    sherlock_compare *.txt > result.txt                      # compare any files and write output into a result file.
+
+You can use the <tt>-t _threshold%_</tt> option.
+
+Output is the same a the normal Sherlock program.
+
+## Files 
+
+Download them by saving the following files:
 
 *   [sig.c](original/sig.c) - Program to generate one signature file.
 *   [comp.c](original/comp.c) - Program to compare signature files.
