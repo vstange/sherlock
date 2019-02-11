@@ -13,7 +13,7 @@
 #include <string.h>
 #include <stdio.h>
 
-// large word size, since hyplag has to do with many word constructs from tables and formulas
+/* large word size, since hyplag has to do with many word constructs from tables and formulas */
 enum{
 	WORDSIZE = 1024
 };
